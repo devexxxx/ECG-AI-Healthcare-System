@@ -4,10 +4,10 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load trained model
+
 model = joblib.load("ecg_model.pkl")
 
-# Label mapping
+
 labels = {
     0: "Normal Rhythm",
     1: "Supraventricular Abnormality",
