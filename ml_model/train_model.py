@@ -14,9 +14,6 @@ from sklearn.metrics import (
     classification_report
 )
 
-# =========================================
-# LOAD DATASETS
-# =========================================
 
 train_data = pd.read_csv(
     "mitbih_train.csv",
@@ -28,9 +25,7 @@ test_data = pd.read_csv(
     header=None
 )
 
-# =========================================
-# FEATURES AND LABELS
-# =========================================
+
 
 X_train = train_data.iloc[:, :-1]
 y_train = train_data.iloc[:, -1]
@@ -38,9 +33,7 @@ y_train = train_data.iloc[:, -1]
 X_test = test_data.iloc[:, :-1]
 y_test = test_data.iloc[:, -1]
 
-# =========================================
-# MODEL
-# =========================================
+
 
 model = RandomForestClassifier(
     n_estimators=200,
@@ -50,23 +43,17 @@ model = RandomForestClassifier(
     n_jobs=-1
 )
 
-# =========================================
-# TRAIN
-# =========================================
+
 
 print("Training model...\n")
 
 model.fit(X_train, y_train)
 
-# =========================================
-# PREDICT
-# =========================================
+
 
 predictions = model.predict(X_test)
 
-# =========================================
-# METRICS
-# =========================================
+
 
 accuracy = accuracy_score(y_test, predictions)
 
@@ -96,9 +83,7 @@ macro_f1 = f1_score(
 
 cm = confusion_matrix(y_test, predictions)
 
-# =========================================
-# PRINT RESULTS
-# =========================================
+
 
 print("========== MODEL RESULTS ==========\n")
 
@@ -118,10 +103,6 @@ print(classification_report(y_test, predictions))
 print("\n========== CONFUSION MATRIX ==========\n")
 
 print(cm)
-
-# =========================================
-# SAVE MODEL
-# =========================================
 
 joblib.dump(model, "ecg_model.pkl")
 
