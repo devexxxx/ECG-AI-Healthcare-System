@@ -108,9 +108,7 @@ joblib.dump(model, "ecg_model.pkl")
 
 print("\nModel saved as ecg_model.pkl")
 
-# =========================================
-# CONFUSION MATRIX PLOT
-# =========================================
+
 
 plt.figure(figsize=(8,6))
 
